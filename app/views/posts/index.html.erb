@@ -1,4 +1,8 @@
 <h3>スケジュール一覧</h3>
+<% if flash[:notice] %>
+<p class="notice"><%= flash[:notice] %></p>
+<% end %>
+
 
 <table>
   <thead>
@@ -18,16 +22,20 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= user.id %></td>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.age %></td>
-        <td><%= user.introduction %></td>
-        <td><%= user.updated_at %></td>
-        <td><%= user.created_at %></td>
+        <td><%= post.id %></td>
+        <td><%= post.title %></td>
+        <td><%= post.startdate %></td>
+        <td><%= post.enddate %></td>
+        <td><%= post.alldate %></td>
+        <td><%= post.renewal_date %></td>
+        <td>
+        <%= link_to "詳細", post %>
+        </td>
+        <td>
+        <%= link_to "編集", post %>
+        </td>
       </tr>
     <% end %>
-
     <p><%= link_to "新規追加", :new_post %></p>
   </tbody>
 </table>

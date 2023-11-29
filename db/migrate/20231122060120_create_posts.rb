@@ -6,7 +6,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.integer :startdate
       t.integer :enddate
       t.integer :allday
-      t.integer :update
+      t.integer :renewal_date
 
       t.timestamps
     end
