@@ -40,4 +40,5 @@ class PostsController < ApplicationController
     flash[:notice] = "削除しました"
     redirect_to :posts
   end
+
 end
