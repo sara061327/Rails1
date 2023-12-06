@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
   
   def create
-    @post = Post.new(params.require(:post).permit(:user_id, :title, :startdate, :enddate, :allday, :update_date,))
+    @post = Post.new(params.require(:post).permit(:user_id, :title, :startdate, :enddate, :allday, :update_date, :memo,))
     if @post.save
       flash[:notice] = "登録完了しました"
       redirect_to :posts
@@ -27,10 +27,11 @@ class PostsController < ApplicationController
   
   def update
     @post = Post.find(params[:id])
-    if @post.update(params.require(:post).permit(:user_id, :title, :startdate, :enddate, :allday, :renewal_date))
+    if @post.update(params.require(:post).permit(:user_id, :title, :startdate, :enddate, :allday, :renewal_date, :memo,))
       flash[:notice] = "ユーザーIDが「#{@post.id}」の情報を更新しました"
       redirect_to :posts
     else
+      render "edit"
     end
   end
   
