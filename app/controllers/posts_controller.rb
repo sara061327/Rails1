@@ -4,16 +4,16 @@ class PostsController < ApplicationController
   end
 
   def new
-  @post = Post.new 
+    @post = Post.new
+
   end
-  
   def create
-    @post = Post.new(params.require(:post).permit(:user_id, :title, :startdate, :enddate, :allday, :update_date, :memo,))
+    @post = Post.new(params.require(:post).permit(:user_id, :title, :startdate, :enddate, :allday, :update_date, :memo))
     if @post.save
       flash[:notice] = "登録完了しました"
       redirect_to :posts
     else
-      flash[:notice] = "スケジュールを更新できませんでした"
+      flash[:notice] = "スケジュールを登録できませんでした"
       render "new"
     end
   end
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(params.require(:post).permit(:user_id, :title, :startdate, :enddate, :allday, :renewal_date, :memo,))
-      flash[:notice] = "ユーザーIDが「#{@post.id}」の情報を更新しました"
+      flash[:notice] = "ユーザーIDが「#{@post.user_id}」の情報を更新しました"
       redirect_to :posts
     else
       render "edit"
