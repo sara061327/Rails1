@@ -1,10 +1,7 @@
 class PostsController < ApplicationController
   def index
    @posts = Post.all
-  end
-
-  def get_today
-   @todays_date = Date.today
+   @schedule_total = Post.all.count
   end
 
   def new

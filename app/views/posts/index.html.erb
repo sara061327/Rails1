@@ -3,9 +3,6 @@
 <p class="notice"><%= flash[:notice] %></p>
 <% end %>
 
-
-
-
 <table>
   <thead>
     <tr>
@@ -50,3 +47,9 @@
   </tbody>
 </table>
 
+<div>
+<p> 予定の合計 <% @schedule_total %></p>
+
+<p> 本日の日付 <%= Time.now.strftime("%Y/%m/%d")%></p>
+
+</div>
